@@ -4,13 +4,12 @@
 ## We'll assume that the matrix supplied is always invertible.
 
 makeCacheMatrix <- function(x = matrix()) {
- 
     cache <- NULL
-    set <- function(y) { 
+    set <- function(y) {                                      ##setter method
       x <<- y
       cache <<- NULL
     }
-    get <- function() x 
+    get <- function() x                                      ##getter method
     setCacheMatrix <- function(solve) cache <<- solve    
     getCacheMatrix <- function()cache
     list(set=set,get=get,
@@ -23,8 +22,6 @@ makeCacheMatrix <- function(x = matrix()) {
 ##If there is, it uses the cached copy thereby saving time in computing. If cache is NULL then it computes the inverse using solve() function
 
 cacheSolve <- function(x, ...) {
-       
-  
     cache <- x$getCacheMatrix()
     if(!is.null(cache)){
       message("retrieving from cache")
